@@ -1,0 +1,30 @@
+{% extends 'modelo.html' %}
+{% block conteudo %}
+{%for vaga in vagas %}
+<h3 class="text-center mt-3 mb-3">Descrição da vaga</h3>
+<div class="container form-control p-3 mt-3 mb-5" style="white-space: pre-line; width: 74%;">
+    <div class="row" >
+        
+
+            <h4>Cargo</h4>
+            <h5 class="text-black fs-6 ms-3 ">{{ vaga['cargo_vaga'] }}</h5>
+            <h4 class="mt-4">Requisitos</h4>
+            <h5 class="text-black fs-6 ms-3 ">{{ vaga['requisitos_vaga'] }}</h5>
+            <h4 class="mt-4">Salário</h4>
+            <h5 class="text-black fs-6 ms-3 "> R$ {{ vaga['salario_vaga'] }}</h5>
+            <h4 class="mt-4">Local</h4>
+            <h5 class="text-black fs-6 ms-3 ">{{ vaga['local_vaga'] }}</h5>
+            <h4 class="mt-4">Tipo</h4>
+            <h5 class="text-black fs-6 ms-3 ">{{ vaga['tipo_vaga'] }}</h5>
+            <h4 class="mt-4">E-mail de contato</h4>
+            <h5 class="text-black fs-6 ms-3 ">{{ vaga['email_vaga'] }}</h5>
+      
+
+            <div class="col-12 text-center mt-3"> <img class="shadow-lg border-2 border-dark " src="../static/img/vagas/{{ vaga['img_vaga'] }}"  style="width:40%; border: 2px solid black; border-radius: 5%; "> </div>
+    </div>
+</div>
+<a class="text-center btn m-3 mx-4" href="/vagas" role="button" style="background-color: #084d6e; color: white"><i class="bi bi-arrow-return-left"></i></a>
+
+
+{% endfor %}
+{% endblock %}

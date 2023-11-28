@@ -1,0 +1,81 @@
+{% extends 'modelo.html' %}
+{% block conteudo %}
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <h1 class="mb-4 display-4">Editar vaga</h1>
+            <form action="/editarvagas" method="post" enctype="multipart/form-data" class="col-sm-10 col-md-8 col-lg-6 text-center needs-validation " style="min-height: 100vh;" novalidate>
+                {% for vaga in vagas %}
+
+                    <div class="form-floating mb-3">
+                        <textarea name="cargo_vaga" class="form-control" placeholder="">{{ vaga['cargo_vaga'] }}</textarea>
+                        <label for="cargo_vaga">Cargo:</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea name="requisitos_vaga" class="form-control" placeholder="">{{ vaga['requisitos_vaga'] }}</textarea>
+                        <label for="requisitos_vaga">Requisitos:</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea name="local_vaga" class="form-control" placeholder="">{{ vaga['local_vaga'] }}</textarea>
+                        <label for="local_vaga">Local:</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea name="tipo_vaga" class="form-control" placeholder="">{{ vaga['tipo_vaga'] }}</textarea>
+                        <label for="tipo_vaga">Tipo:</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea name="email_vaga" class="form-control" placeholder="">{{ vaga['email_vaga'] }}</textarea>
+                        <label for="email_vaga">Email:</label>
+                    </div>
+
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">R$</span>
+                        <div class="form-floating">
+                            <input type="text" name="salario_vaga" class="form-control" value="{{ vaga['salario_vaga'] }}" placeholder="" />
+                            <label for="preco_prod">Salário:</label>
+                        </div>
+                    </div>
+
+                    <div class="input-group m2-3">
+                        <span class="input-group-text"><i class="bi bi-file-image"></i></span>
+                        <div class="form-floating">
+                            <input type="file" name="img_vaga" id="img_vaga" accept="image/jpeg,image/png" class="form-control" />
+                            <div class="invalid-feedback">
+                                Você deve enviar a foto exemplar
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="id_vaga" value="{{ vaga['id_vaga'] }}" />
+                    <input type="hidden" name="nomeimg_vaga" value="{{ vaga['img_vaga'] }}" />
+                    {% endfor %}
+
+                    <input type="submit" class="mt-5 btn btn-lg justify-content-center" value="editar" style="color: white; background: #084d6e" />
+            </form>
+        </div>
+    </div>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict'
+    
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+    
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+    
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+
+{% endblock %}

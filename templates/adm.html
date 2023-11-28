@@ -1,0 +1,34 @@
+{% extends 'modelo.html' %}
+{% block conteudo %}
+
+{% if not vagas %}
+  <h1 class="text-center text-black my-5">Você ainda não cadastrou nenhuma vaga!  </h1>
+  {% else %}
+  <div class="container text-center mt-4">
+    <ul class="list-group mb-3 d-flex flex-row">
+        <div class="row g-3">
+            {% for vaga in vagas %}
+            <div class="col-12 col-md-10 col-lg-6 mx-auto">
+                <li class="list-group-item py-1 d-flex align-items-center" style="height: 220px;">
+                    <div class="col-3 me-3 mh-100">
+                        <img src="../static/img/vagas/{{ vaga['img_vaga'] }}" class="img-thumbnail mh-100" />
+                    </div>
+                    <div class="col-5 mt-2">
+                        <h4 class="text-black">{{ vaga['cargo_vaga'] }}</h4>
+                    </div>
+                    <div class="col">
+                        <a href="/editvagas/{{ vaga['id_vaga'] }}"><i class="bi bi-pencil-square fs-3"></i></a>
+                        <a href="/excluir/{{ vaga['id_vaga'] }}" onclick="return confirm('Você tem certeza de que deseja excluir essa vaga?')"><i class="bi bi-trash3 fs-3 ms-5"></i></a>
+                    </div>
+                </li>
+            </div>
+            {% endfor %}
+        </div>
+    </ul>
+    {% endif %}
+    <div class="container text-center mb-3">
+        <button type="button" onclick="window.location.href='/cadvagas'" class="btn btn-lg  mx-5 text-white" style="background-color: #084d6e;" >Cadastrar vagas</button>
+        <button type="button" onclick="window.location.href='/logout'" class="btn btn-lg btn-danger mx-5">Sair</button>
+    </div>
+  </div>
+{% endblock %}

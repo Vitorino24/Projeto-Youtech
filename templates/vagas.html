@@ -1,0 +1,48 @@
+{% extends 'modelo.html' %}
+{% block conteudo %}
+
+<div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/static/img/carousel/1.gif" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/carousel/2.gif" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/carousel/3.gif" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+ 
+    {% if not vagas %}
+    <h1 class="text-center">Não há vagas disponiveis no momento <br> volte mais tarde.</h1>
+    {% else %}
+    <h3 class="text-center mt-3">VENHA FAZER PARTE DO NOSSO TIME!</h3>
+    {% for vaga in vagas %}
+    
+  
+    <div class="container mt-3 mb-4" style=" width: 100%; height: 30px">
+      <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="/infovaga/{{vaga['id_vaga']}}"><h5> {{ vaga['cargo_vaga'] }} </h5></a>
+    </div>
+    
+<!-- apresentar o nome da vaga com a sua variável -->
+</div>
+{% endfor %}
+
+
+
+
+{% endif %}
+<div>
+<a class="btn m-3 mx-4" href="/#" role="button" style="background-color: #084d6e; color: white"><i class="bi bi-arrow-return-left"></i></a>
+</div>
+{% endblock %}
